@@ -14,9 +14,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class Main extends Game {
     private SpriteBatch batch;
-    private BitmapFont bigFont;
-    private BitmapFont middleFont;
-    private BitmapFont smallFont;
     private Sound brickHit1Sound;
     private Sound brickHit2Sound;
     private Sound confirmSound;
@@ -34,22 +31,13 @@ public class Main extends Game {
     private Texture background;
 
 
-
-
     @Override
     public void create() {
         this.setScreen(new StartScreen(this));
         batch = new SpriteBatch();
 
         Gdx.graphics.setVSync(true);
-
-
-
-
-
-
         chargeGraphics();
-        chargeFonts();
         chargeSounds();
 
     }
@@ -75,16 +63,7 @@ public class Main extends Game {
         wallHitSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wall_hit.wav"));
     }
 
-    private void chargeFonts() {
-        bigFont = new BitmapFont(Gdx.files.internal("font/font.fnt"));
-        bigFont.getData().scale(6);
 
-        middleFont = new BitmapFont(Gdx.files.internal("font/font.fnt"));
-        middleFont.getData().scale(4);
-
-        smallFont = new BitmapFont(Gdx.files.internal("font/font.fnt"));
-        smallFont.getData().scale(2);
-    }
 
     @Override
     public void render() {
@@ -95,7 +74,7 @@ public class Main extends Game {
     @Override
     public void dispose() {
         batch.dispose();
-        bigFont.dispose();
+
     }
 
 
@@ -103,21 +82,11 @@ public class Main extends Game {
         return batch;
     }
 
-    public BitmapFont getBigFont() {
-        return bigFont;
-    }
-
-    public BitmapFont getMiddleFont() {
-        return middleFont;
-    }
 
     public Texture getBackground() {
         return background;
     }
 
-    public BitmapFont getSmallFont() {
-        return smallFont;
-    }
 
     public Sound getBrickHit1Sound() {
         return brickHit1Sound;
