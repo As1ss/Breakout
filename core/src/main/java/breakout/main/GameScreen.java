@@ -23,11 +23,9 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0.15f, 0.15f, 0.2f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.getBatch().begin();
-        game.getBigFont().draw(game.getBatch(), "GAMESCREEN TAP TO GO FIRSTCREEN", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         game.getBatch().end();
 
         if (Gdx.input.isTouched()){
-            System.out.println("HA SID PULSADA A");
             game.setScreen(new StartScreen(game));
 
         }
@@ -64,7 +62,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         game.getBatch().dispose();
-        game.getBigFont().dispose();
+
 
     }
 }
