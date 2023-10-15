@@ -22,20 +22,16 @@ public class GameScreen implements Screen {
 
         Gdx.gl.glClearColor(0.15f, 0.15f, 0.2f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        game.getBatch().begin();
-        game.getBatch().end();
 
-        if (Gdx.input.isTouched()){
-            game.setScreen(new StartScreen(game));
 
-        }
+        update(delta);
 
     }
 
     public void update(float delta){
         if (Gdx.input.isTouched()){
             game.setScreen(new StartScreen(game));
-            dispose();
+
         }
 
     }

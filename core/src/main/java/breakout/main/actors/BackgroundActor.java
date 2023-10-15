@@ -7,13 +7,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class BackgroundActor extends Actor {
     private Texture texture;
-    public BackgroundActor(){
-        texture= new Texture("graphics/background.png");
+
+    public BackgroundActor(Texture backgroundTexture) {
+        this.texture = backgroundTexture;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(texture,getX(),getY(), Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        batch.draw(texture, getX(), getY(), Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override

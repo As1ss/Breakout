@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -30,9 +31,13 @@ public class StartScreen implements Screen {
     private Label startText;
     private Label titleGame;
     private Label highScores;
+    private Texture backgroundTexture;
+    private Label fpsMetter;
 
     public StartScreen(Main game) {
         this.game = game;
+        backgroundTexture = new Texture("graphics/background.png");
+
 
     }
 
@@ -41,8 +46,14 @@ public class StartScreen implements Screen {
         stage = new Stage();
         skin = new Skin(Gdx.files.internal("skin/arcade-ui.json"));
         table = new Table();
-        background = new BackgroundActor();
+        background = new BackgroundActor(backgroundTexture);
         stage.addActor(background);
+
+        fpsMetter = new Label("FPS: 0",skin);
+        fpsMetter.setFontScale(2);
+        fpsMetter.setPosition(24f,Gdx.graphics.getHeight()-60f);
+        fpsMetter.setColor(Color.GREEN);
+        stage.addActor(fpsMetter);
 
         titleGame = new Label("BREAKOUT", skin);
         titleGame.setFontScale(6);
@@ -78,6 +89,7 @@ public class StartScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         update(delta);
+        fpsMetter.setText("FPS: "+ Gdx.graphics.getFramesPerSecond());
 
         stage.act();
         stage.draw();
@@ -90,6 +102,7 @@ public class StartScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
+
             }
         });
 
@@ -113,11 +126,12 @@ public class StartScreen implements Screen {
 
     @Override
     public void hide() {
-       stage.dispose();
+        stage.dispose();
     }
 
     @Override
     public void dispose() {
+        backgroundTexture.dispose();
 
 
     }
