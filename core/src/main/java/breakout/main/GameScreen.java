@@ -70,7 +70,8 @@ public class GameScreen implements Screen {
     public void update(float delta){
         fpsMeter.setText("FPS: "+ Gdx.graphics.getFramesPerSecond());
         if (Gdx.input.isTouched()){
-            game.setScreen(new StartScreen(game));
+          //  game.setScreen(new StartScreen(game));
+
 
 
         }
