@@ -89,7 +89,7 @@ public class StartScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         update(delta);
-        fpsMetter.setText("FPS: "+ Gdx.graphics.getFramesPerSecond());
+
 
         stage.act();
         stage.draw();
@@ -98,6 +98,8 @@ public class StartScreen implements Screen {
     }
 
     public void update(float delta) {
+        fpsMetter.setText("FPS: "+ Gdx.graphics.getFramesPerSecond());
+
         startText.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
